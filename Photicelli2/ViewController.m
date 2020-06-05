@@ -14,6 +14,12 @@
 
 @implementation ViewController
 
+- (void)loadView {
+    [super loadView];
+    _menuView = [[MenuView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.view = _menuView;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

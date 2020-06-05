@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MenuView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    MenuView *_menuView;
+}
 
 
 @end

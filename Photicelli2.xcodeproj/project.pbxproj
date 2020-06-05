@@ -14,6 +14,8 @@
 		AC9F739B248ABF9000FF3381 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC9F739A248ABF9000FF3381 /* Assets.xcassets */; };
 		AC9F739E248ABF9000FF3381 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9F739C248ABF9000FF3381 /* LaunchScreen.storyboard */; };
 		AC9F73A1248ABF9000FF3381 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F73A0248ABF9000FF3381 /* main.m */; };
+		AC9F73A9248ADDB000FF3381 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F73A8248ADDB000FF3381 /* MenuView.m */; };
+		AC9F73AD248ADEB600FF3381 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F73AC248ADEB600FF3381 /* Theme.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,10 @@
 		AC9F739D248ABF9000FF3381 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC9F739F248ABF9000FF3381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC9F73A0248ABF9000FF3381 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AC9F73A7248ADDB000FF3381 /* MenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
+		AC9F73A8248ADDB000FF3381 /* MenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
+		AC9F73AB248ADEB600FF3381 /* Theme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
+		AC9F73AC248ADEB600FF3381 /* Theme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,12 +67,15 @@
 		AC9F738D248ABF8D00FF3381 /* Photicelli2 */ = {
 			isa = PBXGroup;
 			children = (
+				AC9F73AA248ADE7A00FF3381 /* Utils */,
 				AC9F738E248ABF8D00FF3381 /* AppDelegate.h */,
 				AC9F738F248ABF8D00FF3381 /* AppDelegate.m */,
 				AC9F7391248ABF8D00FF3381 /* SceneDelegate.h */,
 				AC9F7392248ABF8D00FF3381 /* SceneDelegate.m */,
 				AC9F7394248ABF8D00FF3381 /* ViewController.h */,
 				AC9F7395248ABF8D00FF3381 /* ViewController.m */,
+				AC9F73A7248ADDB000FF3381 /* MenuView.h */,
+				AC9F73A8248ADDB000FF3381 /* MenuView.m */,
 				AC9F7397248ABF8D00FF3381 /* Main.storyboard */,
 				AC9F739A248ABF9000FF3381 /* Assets.xcassets */,
 				AC9F739C248ABF9000FF3381 /* LaunchScreen.storyboard */,
@@ -74,6 +83,15 @@
 				AC9F73A0248ABF9000FF3381 /* main.m */,
 			);
 			path = Photicelli2;
+			sourceTree = "<group>";
+		};
+		AC9F73AA248ADE7A00FF3381 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AC9F73AB248ADEB600FF3381 /* Theme.h */,
+				AC9F73AC248ADEB600FF3381 /* Theme.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,7 +167,9 @@
 				AC9F7396248ABF8D00FF3381 /* ViewController.m in Sources */,
 				AC9F7390248ABF8D00FF3381 /* AppDelegate.m in Sources */,
 				AC9F73A1248ABF9000FF3381 /* main.m in Sources */,
+				AC9F73AD248ADEB600FF3381 /* Theme.m in Sources */,
 				AC9F7393248ABF8D00FF3381 /* SceneDelegate.m in Sources */,
+				AC9F73A9248ADDB000FF3381 /* MenuView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +312,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 788WMGHEL8;
 				INFOPLIST_FILE = Photicelli2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +330,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 788WMGHEL8;
 				INFOPLIST_FILE = Photicelli2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
