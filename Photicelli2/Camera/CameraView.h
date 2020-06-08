@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
      * UI
      */
     UIButton *_cancelButton;
+    UIButton *_flipCameraButton;
+    BOOL _frontCamera;
 }
 
 @property (nonatomic, weak) id <ICameraViewDelegate> delegate;

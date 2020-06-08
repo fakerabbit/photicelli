@@ -10,6 +10,7 @@
 
 @interface CameraView (IBActions)
 -(IBAction)onGoBack:(id)sender;
+-(IBAction)onFlipCamera:(id)sender;
 @end
 
 @implementation CameraView
@@ -33,6 +34,17 @@
         [_cancelButton.heightAnchor constraintEqualToConstant:50].active = YES;
         [_cancelButton.topAnchor constraintEqualToAnchor:self.topAnchor constant:50.0].active = YES;
         [_cancelButton.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:10.0].active = YES;
+        
+        _flipCameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_flipCameraButton setBackgroundImage:[UIImage systemImageNamed:@"camera"] forState:UIControlStateNormal];
+        [_flipCameraButton setTintColor:[Theme cyanColor]];
+        [_flipCameraButton addTarget:self action:@selector(onFlipCamera:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_flipCameraButton];
+        _flipCameraButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [_flipCameraButton.widthAnchor constraintEqualToConstant:60].active = YES;
+        [_flipCameraButton.heightAnchor constraintEqualToConstant:50].active = YES;
+        [_flipCameraButton.topAnchor constraintEqualToAnchor:self.topAnchor constant:50.0].active = YES;
+        [_flipCameraButton.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-10.0].active = YES;
     }
     return self;
 }
@@ -58,7 +70,7 @@
     else if (_iOrientation == UIDeviceOrientationLandscapeRight)
         _stillCamera.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
     else
-        _stillCamera.outputImageOrientation = UIInterfaceOrientationPortraitUpsideDown;
+        _stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
 }
 
 #pragma mark - Filters
@@ -679,6 +691,37 @@
     [delegate onGoBack];
 }
 
+- (IBAction)onFlipCamera:(id)sender {
+    [_stillCamera stopCameraCapture];
+    [_stillCamera removeAllTargets];
+    _stillCamera = nil;
+    
+    if (_frontCamera) {
+        //_flashBtn.hidden = NO;
+        //_flashBtn.enabled = YES;
+        _stillCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPresetPhoto cameraPosition:AVCaptureDevicePositionBack];
+        _frontCamera = FALSE;
+    }
+    else {
+        //_flashBtn.hidden = YES;
+        //_flashBtn.enabled = NO;
+        _stillCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPresetPhoto cameraPosition:AVCaptureDevicePositionFront];
+        _frontCamera = TRUE;
+    }
+    
+    if (_iOrientation == UIDeviceOrientationPortrait)
+        _stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+    else if (_iOrientation == UIDeviceOrientationLandscapeLeft)
+        _stillCamera.outputImageOrientation = UIInterfaceOrientationLandscapeRight;
+    else if (_iOrientation == UIDeviceOrientationLandscapeRight)
+        _stillCamera.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
+    else
+        _stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+    
+    [_stillCamera addTarget:_filter];
+    [_stillCamera startCameraCapture];
+}
+
 #pragma mark - Capture
 
 - (void)stopCapture:(BOOL)pStop {
@@ -694,7 +737,7 @@
         else if (_iOrientation == UIDeviceOrientationLandscapeRight)
             _stillCamera.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
         else
-            _stillCamera.outputImageOrientation = UIInterfaceOrientationPortraitUpsideDown;
+            _stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     }
 }
 
