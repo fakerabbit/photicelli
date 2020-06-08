@@ -10,11 +10,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol IMenuViewDelegate <NSObject>
+-(void)onCamera;
+-(void)onLibrary;
+@end
+
 @interface MenuView : UIView {
 @private
     UIButton *_cameraBtn;
     UIButton *_libraryBtn;
 }
+
+@property (nonatomic, weak) id <IMenuViewDelegate> delegate;
 
 @end
 

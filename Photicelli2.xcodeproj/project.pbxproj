@@ -16,6 +16,9 @@
 		AC9F73A1248ABF9000FF3381 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F73A0248ABF9000FF3381 /* main.m */; };
 		AC9F73A9248ADDB000FF3381 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F73A8248ADDB000FF3381 /* MenuView.m */; };
 		AC9F73AD248ADEB600FF3381 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F73AC248ADEB600FF3381 /* Theme.m */; };
+		AC9F73B1248B04D800FF3381 /* CameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F73B0248B04D800FF3381 /* CameraController.m */; };
+		AC9F73B4248B04F400FF3381 /* CameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F73B3248B04F400FF3381 /* CameraView.m */; };
+		ACFCD001248C8C3600136D21 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCD000248C8C3600136D21 /* NavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,12 @@
 		AC9F73A8248ADDB000FF3381 /* MenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
 		AC9F73AB248ADEB600FF3381 /* Theme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
 		AC9F73AC248ADEB600FF3381 /* Theme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
+		AC9F73AF248B04D800FF3381 /* CameraController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraController.h; sourceTree = "<group>"; };
+		AC9F73B0248B04D800FF3381 /* CameraController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraController.m; sourceTree = "<group>"; };
+		AC9F73B2248B04F400FF3381 /* CameraView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraView.h; sourceTree = "<group>"; };
+		AC9F73B3248B04F400FF3381 /* CameraView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraView.m; sourceTree = "<group>"; };
+		ACFCCFFF248C8C3600136D21 /* NavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		ACFCD000248C8C3600136D21 /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +76,7 @@
 		AC9F738D248ABF8D00FF3381 /* Photicelli2 */ = {
 			isa = PBXGroup;
 			children = (
+				AC9F73AE248B034200FF3381 /* Camera */,
 				AC9F73AA248ADE7A00FF3381 /* Utils */,
 				AC9F738E248ABF8D00FF3381 /* AppDelegate.h */,
 				AC9F738F248ABF8D00FF3381 /* AppDelegate.m */,
@@ -74,6 +84,8 @@
 				AC9F7392248ABF8D00FF3381 /* SceneDelegate.m */,
 				AC9F7394248ABF8D00FF3381 /* ViewController.h */,
 				AC9F7395248ABF8D00FF3381 /* ViewController.m */,
+				ACFCCFFF248C8C3600136D21 /* NavigationController.h */,
+				ACFCD000248C8C3600136D21 /* NavigationController.m */,
 				AC9F73A7248ADDB000FF3381 /* MenuView.h */,
 				AC9F73A8248ADDB000FF3381 /* MenuView.m */,
 				AC9F7397248ABF8D00FF3381 /* Main.storyboard */,
@@ -92,6 +104,17 @@
 				AC9F73AC248ADEB600FF3381 /* Theme.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		AC9F73AE248B034200FF3381 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				AC9F73AF248B04D800FF3381 /* CameraController.h */,
+				AC9F73B0248B04D800FF3381 /* CameraController.m */,
+				AC9F73B2248B04F400FF3381 /* CameraView.h */,
+				AC9F73B3248B04F400FF3381 /* CameraView.m */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,8 +187,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC9F73B1248B04D800FF3381 /* CameraController.m in Sources */,
 				AC9F7396248ABF8D00FF3381 /* ViewController.m in Sources */,
 				AC9F7390248ABF8D00FF3381 /* AppDelegate.m in Sources */,
+				ACFCD001248C8C3600136D21 /* NavigationController.m in Sources */,
+				AC9F73B4248B04F400FF3381 /* CameraView.m in Sources */,
 				AC9F73A1248ABF9000FF3381 /* main.m in Sources */,
 				AC9F73AD248ADEB600FF3381 /* Theme.m in Sources */,
 				AC9F7393248ABF8D00FF3381 /* SceneDelegate.m in Sources */,

@@ -9,7 +9,14 @@
 #import "MenuView.h"
 #import "Theme.h"
 
+@interface MenuView (IBActions)
+-(IBAction)onCamera:(id)sender;
+-(IBAction)onLibrary:(id)sender;
+@end
+
 @implementation MenuView
+
+@synthesize delegate;
 
 #pragma mark - Init
 
@@ -23,7 +30,7 @@
         _cameraBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_cameraBtn setBackgroundImage:[UIImage systemImageNamed:@"camera"] forState:UIControlStateNormal];
         [_cameraBtn setTintColor:[Theme cyanColor]];
-       //[_cameraBtn addTarget:self action:@selector(onCamera:) forControlEvents:UIControlEventTouchUpInside];
+        [_cameraBtn addTarget:self action:@selector(onCamera:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_cameraBtn];
         _cameraBtn.translatesAutoresizingMaskIntoConstraints = NO;
         [_cameraBtn.widthAnchor constraintEqualToConstant:100].active = YES;
@@ -34,7 +41,7 @@
         _libraryBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_libraryBtn setBackgroundImage:[UIImage systemImageNamed:@"folder"] forState:UIControlStateNormal];
         [_libraryBtn setTintColor:[Theme cyanColor]];
-        //[_libraryBtn addTarget:self action:@selector(onRoll:) forControlEvents:UIControlEventTouchUpInside];
+        [_libraryBtn addTarget:self action:@selector(onLibrary:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_libraryBtn];
         _libraryBtn.translatesAutoresizingMaskIntoConstraints = NO;
         [_libraryBtn.widthAnchor constraintEqualToConstant:100].active = YES;
@@ -51,6 +58,16 @@
     }
     
     return self;
+}
+
+#pragma mark - IBActions
+
+- (IBAction)onCamera:(id)sender {
+    [delegate onCamera];
+}
+
+-(IBAction)onLibrary:(id)sender {
+    [delegate onLibrary];
 }
 
 @end

@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "MenuView.h"
+#import "CameraController.h"
 
-@interface ViewController : UIViewController {
+@interface ViewController : UIViewController <IMenuViewDelegate> {
+@private
     MenuView *_menuView;
+    CameraController *_cameraController;
 }
 
 
