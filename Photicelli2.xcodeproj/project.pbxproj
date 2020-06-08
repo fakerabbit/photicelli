@@ -18,8 +18,51 @@
 		AC9F73AD248ADEB600FF3381 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F73AC248ADEB600FF3381 /* Theme.m */; };
 		AC9F73B1248B04D800FF3381 /* CameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F73B0248B04D800FF3381 /* CameraController.m */; };
 		AC9F73B4248B04F400FF3381 /* CameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F73B3248B04F400FF3381 /* CameraView.m */; };
+		ACCA8B1D248DD6A20045D15B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCA8B1C248DD6A20045D15B /* CoreMedia.framework */; };
+		ACCA8B1F248DD6AB0045D15B /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCA8B1E248DD6AB0045D15B /* CoreVideo.framework */; };
+		ACCA8B21248DD6B40045D15B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCA8B20248DD6B40045D15B /* OpenGLES.framework */; };
+		ACCA8B23248DD6BC0045D15B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCA8B22248DD6BC0045D15B /* AVFoundation.framework */; };
+		ACCA8B25248DD6C40045D15B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCA8B24248DD6C40045D15B /* QuartzCore.framework */; };
+		ACCA8B27248DDC410045D15B /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ACCA8B18248DD6550045D15B /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ACFCD001248C8C3600136D21 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCD000248C8C3600136D21 /* NavigationController.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ACCA8B15248DD6550045D15B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ACCA8B0F248DD6540045D15B /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+		ACCA8B17248DD6550045D15B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ACCA8B0F248DD6540045D15B /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCE209E51943F20C002FEED8;
+			remoteInfo = GPUImageFramework;
+		};
+		ACCA8B19248DD6770045D15B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ACCA8B0F248DD6540045D15B /* GPUImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BCE209E41943F20C002FEED8;
+			remoteInfo = GPUImageFramework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ACCA8B26248DDC2C0045D15B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				ACCA8B27248DDC410045D15B /* GPUImage.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AC9F738B248ABF8D00FF3381 /* Photicelli.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photicelli.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +85,12 @@
 		AC9F73B0248B04D800FF3381 /* CameraController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraController.m; sourceTree = "<group>"; };
 		AC9F73B2248B04F400FF3381 /* CameraView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraView.h; sourceTree = "<group>"; };
 		AC9F73B3248B04F400FF3381 /* CameraView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraView.m; sourceTree = "<group>"; };
+		ACCA8B0F248DD6540045D15B /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
+		ACCA8B1C248DD6A20045D15B /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		ACCA8B1E248DD6AB0045D15B /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		ACCA8B20248DD6B40045D15B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		ACCA8B22248DD6BC0045D15B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		ACCA8B24248DD6C40045D15B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		ACFCCFFF248C8C3600136D21 /* NavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		ACFCD000248C8C3600136D21 /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,6 +100,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACCA8B25248DD6C40045D15B /* QuartzCore.framework in Frameworks */,
+				ACCA8B23248DD6BC0045D15B /* AVFoundation.framework in Frameworks */,
+				ACCA8B21248DD6B40045D15B /* OpenGLES.framework in Frameworks */,
+				ACCA8B1F248DD6AB0045D15B /* CoreVideo.framework in Frameworks */,
+				ACCA8B1D248DD6A20045D15B /* CoreMedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,8 +114,10 @@
 		AC9F7382248ABF8D00FF3381 = {
 			isa = PBXGroup;
 			children = (
+				ACCA8B0F248DD6540045D15B /* GPUImage.xcodeproj */,
 				AC9F738D248ABF8D00FF3381 /* Photicelli2 */,
 				AC9F738C248ABF8D00FF3381 /* Products */,
+				ACCA8B1B248DD6A20045D15B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +173,27 @@
 			path = Camera;
 			sourceTree = "<group>";
 		};
+		ACCA8B10248DD6540045D15B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ACCA8B16248DD6550045D15B /* libGPUImage.a */,
+				ACCA8B18248DD6550045D15B /* GPUImage.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ACCA8B1B248DD6A20045D15B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ACCA8B24248DD6C40045D15B /* QuartzCore.framework */,
+				ACCA8B22248DD6BC0045D15B /* AVFoundation.framework */,
+				ACCA8B20248DD6B40045D15B /* OpenGLES.framework */,
+				ACCA8B1E248DD6AB0045D15B /* CoreVideo.framework */,
+				ACCA8B1C248DD6A20045D15B /* CoreMedia.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -127,10 +204,12 @@
 				AC9F7387248ABF8D00FF3381 /* Sources */,
 				AC9F7388248ABF8D00FF3381 /* Frameworks */,
 				AC9F7389248ABF8D00FF3381 /* Resources */,
+				ACCA8B26248DDC2C0045D15B /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				ACCA8B1A248DD6770045D15B /* PBXTargetDependency */,
 			);
 			name = Photicelli2;
 			productName = Photicelli2;
@@ -162,12 +241,35 @@
 			mainGroup = AC9F7382248ABF8D00FF3381;
 			productRefGroup = AC9F738C248ABF8D00FF3381 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = ACCA8B10248DD6540045D15B /* Products */;
+					ProjectRef = ACCA8B0F248DD6540045D15B /* GPUImage.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				AC9F738A248ABF8D00FF3381 /* Photicelli2 */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		ACCA8B16248DD6550045D15B /* libGPUImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGPUImage.a;
+			remoteRef = ACCA8B15248DD6550045D15B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		ACCA8B18248DD6550045D15B /* GPUImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GPUImage.framework;
+			remoteRef = ACCA8B17248DD6550045D15B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AC9F7389248ABF8D00FF3381 /* Resources */ = {
@@ -200,6 +302,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ACCA8B1A248DD6770045D15B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GPUImageFramework;
+			targetProxy = ACCA8B19248DD6770045D15B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AC9F7397248ABF8D00FF3381 /* Main.storyboard */ = {

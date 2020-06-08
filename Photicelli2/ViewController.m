@@ -34,7 +34,11 @@
 }
 
 - (BOOL)shouldAutorotate {
-    return false;
+    return NO;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark - MenuView Delegate methods

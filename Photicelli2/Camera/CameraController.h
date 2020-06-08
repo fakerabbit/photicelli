@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CameraController : UIViewController {
+@interface CameraController : UIViewController <ICameraViewDelegate> {
 @private
     CameraView *_cameraView;
 }

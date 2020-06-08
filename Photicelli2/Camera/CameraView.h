@@ -7,10 +7,38 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <GPUImage/GPUImageFramework.h>
+
+#import "Theme.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CameraView : UIView
+@protocol ICameraViewDelegate <NSObject>
+-(void)onGoBack;
+@end
+
+@interface CameraView : GPUImageView {
+@private
+    /**
+     * GPUImage
+     */
+    GPUImageStillCamera *_stillCamera;
+    kVideoFilterType _filterType;
+    GPUImageOutput<GPUImageInput> *_filter;
+    GPUImagePicture *_sourcePicture;
+    GPUImageFilterPipeline *_pipeline;
+    /**
+     * UI
+     */
+    UIButton *_cancelButton;
+}
+
+@property (nonatomic, weak) id <ICameraViewDelegate> delegate;
+@property (nonatomic) UIDeviceOrientation iOrientation;
+
+- (void)build;
+- (void)stopCapture:(BOOL)pStop;
 
 @end
 
