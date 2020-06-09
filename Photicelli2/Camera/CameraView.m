@@ -11,6 +11,7 @@
 @interface CameraView (IBActions)
 -(IBAction)onGoBack:(id)sender;
 -(IBAction)onFlipCamera:(id)sender;
+-(IBAction)onTakePicture:(id)sender;
 @end
 
 @implementation CameraView
@@ -45,6 +46,19 @@
         [_flipCameraButton.heightAnchor constraintEqualToConstant:50].active = YES;
         [_flipCameraButton.topAnchor constraintEqualToAnchor:self.topAnchor constant:50.0].active = YES;
         [_flipCameraButton.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-10.0].active = YES;
+        
+        _takePictureButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_takePictureButton setBackgroundImage:[UIImage systemImageNamed:@"circle"] forState:UIControlStateNormal];
+        [_takePictureButton setTintColor:[Theme cyanColor]];
+        [_takePictureButton addTarget:self action:@selector(onTakePicture:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_takePictureButton];
+        _takePictureButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [_takePictureButton.widthAnchor constraintEqualToConstant:100].active = YES;
+        [_takePictureButton.heightAnchor constraintEqualToConstant:100].active = YES;
+        [_takePictureButton.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:-100.0].active = YES;
+        [_takePictureButton.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
+        
+        _cameraReady = YES;
     }
     return self;
 }
@@ -720,6 +734,23 @@
     
     [_stillCamera addTarget:_filter];
     [_stillCamera startCameraCapture];
+}
+
+- (IBAction)onTakePicture:(id)sender {
+    if (_cameraReady) {
+        _cameraReady = NO;
+        
+        [_stillCamera capturePhotoAsImageProcessedUpToFilter:_filter withCompletionHandler:^(UIImage *processedImage, NSError *error) {
+            self->_cameraReady = YES;
+            //NSLog(@"processedImage w: %f, h: %f", processedImage.size.width, processedImage.size.height);
+            
+            //UIImageWriteToSavedPhotosAlbum(processedImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+            
+            // Create an UIImage from the CGImageRef object with scale = 1.0 and the orientation of the original image
+            UIImage* correctedImage = [[UIImage alloc] initWithCGImage:processedImage.CGImage scale:1.0 orientation:UIImageOrientationUp];
+            [self->delegate onTakePic:correctedImage];
+        }];
+    }
 }
 
 #pragma mark - Capture

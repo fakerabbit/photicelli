@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
+#import "EditorController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NavigationController : UINavigationController {
 @private
     ViewController *_menuController;
+    EditorController *_editorController;
 }
+
+- (void)goToEditor:(UIImage*)image;
 
 @end
 

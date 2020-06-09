@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ICameraViewDelegate <NSObject>
 -(void)onGoBack;
+-(void)onTakePic:(UIImage*)pPhoto;
 @end
 
 @interface CameraView : GPUImageView {
@@ -34,6 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
     UIButton *_cancelButton;
     UIButton *_flipCameraButton;
     BOOL _frontCamera;
+    BOOL _cameraReady;
+    UIButton *_takePictureButton;
 }
 
 @property (nonatomic, weak) id <ICameraViewDelegate> delegate;

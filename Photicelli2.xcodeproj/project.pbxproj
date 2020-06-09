@@ -18,6 +18,12 @@
 		AC9F73AD248ADEB600FF3381 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F73AC248ADEB600FF3381 /* Theme.m */; };
 		AC9F73B1248B04D800FF3381 /* CameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F73B0248B04D800FF3381 /* CameraController.m */; };
 		AC9F73B4248B04F400FF3381 /* CameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F73B3248B04F400FF3381 /* CameraView.m */; };
+		ACAFD3E0248F2BB2009DE96E /* EditorView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAFD3DF248F2BB2009DE96E /* EditorView.m */; };
+		ACAFD3E3248F2BDF009DE96E /* EditorController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAFD3E2248F2BDF009DE96E /* EditorController.m */; };
+		ACAFD3E6248F304C009DE96E /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAFD3E5248F304B009DE96E /* PhotoView.m */; };
+		ACAFD3EE248F3952009DE96E /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAFD3E8248F3951009DE96E /* UIImage+Resize.m */; };
+		ACAFD3EF248F3952009DE96E /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAFD3EA248F3951009DE96E /* UIImage+RoundedCorner.m */; };
+		ACAFD3F0248F3952009DE96E /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAFD3EC248F3952009DE96E /* UIImage+Alpha.m */; };
 		ACCA8B1D248DD6A20045D15B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCA8B1C248DD6A20045D15B /* CoreMedia.framework */; };
 		ACCA8B1F248DD6AB0045D15B /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCA8B1E248DD6AB0045D15B /* CoreVideo.framework */; };
 		ACCA8B21248DD6B40045D15B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCA8B20248DD6B40045D15B /* OpenGLES.framework */; };
@@ -85,6 +91,18 @@
 		AC9F73B0248B04D800FF3381 /* CameraController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraController.m; sourceTree = "<group>"; };
 		AC9F73B2248B04F400FF3381 /* CameraView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraView.h; sourceTree = "<group>"; };
 		AC9F73B3248B04F400FF3381 /* CameraView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraView.m; sourceTree = "<group>"; };
+		ACAFD3DE248F2BB2009DE96E /* EditorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditorView.h; sourceTree = "<group>"; };
+		ACAFD3DF248F2BB2009DE96E /* EditorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditorView.m; sourceTree = "<group>"; };
+		ACAFD3E1248F2BDF009DE96E /* EditorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditorController.h; sourceTree = "<group>"; };
+		ACAFD3E2248F2BDF009DE96E /* EditorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditorController.m; sourceTree = "<group>"; };
+		ACAFD3E4248F304B009DE96E /* PhotoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoView.h; sourceTree = "<group>"; };
+		ACAFD3E5248F304B009DE96E /* PhotoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoView.m; sourceTree = "<group>"; };
+		ACAFD3E8248F3951009DE96E /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		ACAFD3E9248F3951009DE96E /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		ACAFD3EA248F3951009DE96E /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+		ACAFD3EB248F3952009DE96E /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		ACAFD3EC248F3952009DE96E /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		ACAFD3ED248F3952009DE96E /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
 		ACCA8B0F248DD6540045D15B /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		ACCA8B1C248DD6A20045D15B /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		ACCA8B1E248DD6AB0045D15B /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -132,6 +150,7 @@
 		AC9F738D248ABF8D00FF3381 /* Photicelli2 */ = {
 			isa = PBXGroup;
 			children = (
+				ACAFD3DB248F2B47009DE96E /* Editor */,
 				AC9F73AE248B034200FF3381 /* Camera */,
 				AC9F73AA248ADE7A00FF3381 /* Utils */,
 				AC9F738E248ABF8D00FF3381 /* AppDelegate.h */,
@@ -156,6 +175,7 @@
 		AC9F73AA248ADE7A00FF3381 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				ACAFD3E7248F392B009DE96E /* UIImage+ */,
 				AC9F73AB248ADEB600FF3381 /* Theme.h */,
 				AC9F73AC248ADEB600FF3381 /* Theme.m */,
 			);
@@ -171,6 +191,32 @@
 				AC9F73B3248B04F400FF3381 /* CameraView.m */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		ACAFD3DB248F2B47009DE96E /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				ACAFD3DE248F2BB2009DE96E /* EditorView.h */,
+				ACAFD3DF248F2BB2009DE96E /* EditorView.m */,
+				ACAFD3E1248F2BDF009DE96E /* EditorController.h */,
+				ACAFD3E2248F2BDF009DE96E /* EditorController.m */,
+				ACAFD3E4248F304B009DE96E /* PhotoView.h */,
+				ACAFD3E5248F304B009DE96E /* PhotoView.m */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+		ACAFD3E7248F392B009DE96E /* UIImage+ */ = {
+			isa = PBXGroup;
+			children = (
+				ACAFD3EB248F3952009DE96E /* UIImage+Alpha.h */,
+				ACAFD3EC248F3952009DE96E /* UIImage+Alpha.m */,
+				ACAFD3E9248F3951009DE96E /* UIImage+Resize.h */,
+				ACAFD3E8248F3951009DE96E /* UIImage+Resize.m */,
+				ACAFD3ED248F3952009DE96E /* UIImage+RoundedCorner.h */,
+				ACAFD3EA248F3951009DE96E /* UIImage+RoundedCorner.m */,
+			);
+			path = "UIImage+";
 			sourceTree = "<group>";
 		};
 		ACCA8B10248DD6540045D15B /* Products */ = {
@@ -291,11 +337,17 @@
 			files = (
 				AC9F73B1248B04D800FF3381 /* CameraController.m in Sources */,
 				AC9F7396248ABF8D00FF3381 /* ViewController.m in Sources */,
+				ACAFD3EF248F3952009DE96E /* UIImage+RoundedCorner.m in Sources */,
 				AC9F7390248ABF8D00FF3381 /* AppDelegate.m in Sources */,
+				ACAFD3E6248F304C009DE96E /* PhotoView.m in Sources */,
 				ACFCD001248C8C3600136D21 /* NavigationController.m in Sources */,
+				ACAFD3E3248F2BDF009DE96E /* EditorController.m in Sources */,
 				AC9F73B4248B04F400FF3381 /* CameraView.m in Sources */,
+				ACAFD3F0248F3952009DE96E /* UIImage+Alpha.m in Sources */,
+				ACAFD3E0248F2BB2009DE96E /* EditorView.m in Sources */,
 				AC9F73A1248ABF9000FF3381 /* main.m in Sources */,
 				AC9F73AD248ADEB600FF3381 /* Theme.m in Sources */,
+				ACAFD3EE248F3952009DE96E /* UIImage+Resize.m in Sources */,
 				AC9F7393248ABF8D00FF3381 /* SceneDelegate.m in Sources */,
 				AC9F73A9248ADDB000FF3381 /* MenuView.m in Sources */,
 			);

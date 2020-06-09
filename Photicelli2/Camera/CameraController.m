@@ -7,6 +7,7 @@
 //
 
 #import "CameraController.h"
+#import "NavigationController.h"
 
 @interface CameraController ()
 
@@ -55,6 +56,11 @@
 
 - (void)onGoBack {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)onTakePic:(UIImage *)pPhoto {
+    NavigationController *navigationController = (NavigationController*) self.navigationController;
+    [navigationController goToEditor:pPhoto];
 }
 
 @end
