@@ -11,13 +11,24 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EditorView : UIView {
+@protocol IEditorViewDelegate <NSObject>
+-(void)onGoBack;
+@end
+
+@interface EditorView : UIView <UIScrollViewDelegate> {
 @private
     PhotoView *_photoView;
     UIView *test;
+    /**
+     * UI
+     */
+    UIButton *_cancelButton;
 }
 
-- (void)build:(UIImage*)image;
+@property (nonatomic, weak) id <IEditorViewDelegate> delegate;
+@property (nonatomic, strong) UIImage *image;
+
+- (void)build;
 
 @end
 

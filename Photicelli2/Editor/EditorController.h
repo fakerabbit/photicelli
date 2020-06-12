@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "EditorView.h"
+#import "DataStore.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EditorController : UIViewController {
+@interface EditorController : UIViewController <IEditorViewDelegate> {
 @private
     EditorView *_editorView;
+    DataStore *_dataStore;
 }
 
 @property (nonatomic, retain) UIImage *photo;

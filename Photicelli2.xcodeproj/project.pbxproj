@@ -30,6 +30,8 @@
 		ACCA8B23248DD6BC0045D15B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCA8B22248DD6BC0045D15B /* AVFoundation.framework */; };
 		ACCA8B25248DD6C40045D15B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCA8B24248DD6C40045D15B /* QuartzCore.framework */; };
 		ACCA8B27248DDC410045D15B /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ACCA8B18248DD6550045D15B /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ACF8F8B22494299300C94392 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF8F8B12494299300C94392 /* DataStore.m */; };
+		ACF8F8B7249429ED00C94392 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF8F8B6249429EC00C94392 /* Photo.m */; };
 		ACFCD001248C8C3600136D21 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCD000248C8C3600136D21 /* NavigationController.m */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +111,10 @@
 		ACCA8B20248DD6B40045D15B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		ACCA8B22248DD6BC0045D15B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		ACCA8B24248DD6C40045D15B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		ACF8F8B02494299300C94392 /* DataStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
+		ACF8F8B12494299300C94392 /* DataStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
+		ACF8F8B5249429EC00C94392 /* Photo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		ACF8F8B6249429EC00C94392 /* Photo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		ACFCCFFF248C8C3600136D21 /* NavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		ACFCD000248C8C3600136D21 /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +184,10 @@
 				ACAFD3E7248F392B009DE96E /* UIImage+ */,
 				AC9F73AB248ADEB600FF3381 /* Theme.h */,
 				AC9F73AC248ADEB600FF3381 /* Theme.m */,
+				ACF8F8B02494299300C94392 /* DataStore.h */,
+				ACF8F8B12494299300C94392 /* DataStore.m */,
+				ACF8F8B5249429EC00C94392 /* Photo.h */,
+				ACF8F8B6249429EC00C94392 /* Photo.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -344,10 +354,12 @@
 				ACAFD3E3248F2BDF009DE96E /* EditorController.m in Sources */,
 				AC9F73B4248B04F400FF3381 /* CameraView.m in Sources */,
 				ACAFD3F0248F3952009DE96E /* UIImage+Alpha.m in Sources */,
+				ACF8F8B7249429ED00C94392 /* Photo.m in Sources */,
 				ACAFD3E0248F2BB2009DE96E /* EditorView.m in Sources */,
 				AC9F73A1248ABF9000FF3381 /* main.m in Sources */,
 				AC9F73AD248ADEB600FF3381 /* Theme.m in Sources */,
 				ACAFD3EE248F3952009DE96E /* UIImage+Resize.m in Sources */,
+				ACF8F8B22494299300C94392 /* DataStore.m in Sources */,
 				AC9F7393248ABF8D00FF3381 /* SceneDelegate.m in Sources */,
 				AC9F73A9248ADDB000FF3381 /* MenuView.m in Sources */,
 			);

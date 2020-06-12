@@ -10,16 +10,27 @@
 #import "UIImage+Resize.h"
 
 @interface EditorController ()
-
+- (void)processPhoto:(UIImageOrientation)orientation;
 @end
 
 @implementation EditorController
+
+#pragma mark - Init
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        _dataStore = [[DataStore alloc] init];
+    }
+    return self;
+}
 
 #pragma mark - View methods
 
 - (void)loadView {
     [super loadView];
     _editorView = [[EditorView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    _editorView.delegate = self;
     
     // Create image for editing...
     float w = 0;
@@ -46,12 +57,10 @@
     UIImage* scaledImage = [[UIImage alloc] initWithCGImage:[_photo resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:desiredSize interpolationQuality:kCGInterpolationHigh].CGImage];
     //NSLog(@"scaled image w: %f, h: %f", scaledImage.size.width, scaledImage.size.height);
     
-    //_editorView.image = scaledImage;
-    [_editorView build:scaledImage];
+    _editorView.image = scaledImage;
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void){
-        //[self processPhoto: _photo.imageOrientation];
-        //[self->_editorView build:scaledImage];
+        [self processPhoto: self->_photo.imageOrientation];
     });
     
     //NSLog(@"scaledImage orientation: %ld", scaledImage.imageOrientation);
@@ -70,6 +79,35 @@
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
+}
+
+#pragma mark - Private Methods
+
+- (void)processPhoto:(UIImageOrientation)orientation {
+    // Delete test picture just in case
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    NSString *filePath = [documentsPath stringByAppendingPathComponent: [NSString stringWithFormat:@"test.png"]];
+    [fileManager removeItemAtPath:filePath error:NULL];
+    
+    // Store original image
+    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *pngFilePath = [NSString stringWithFormat:@"%@/test.png",docDir];
+    NSData *data = [NSData dataWithData:UIImagePNGRepresentation(_photo)];
+    [data writeToFile: pngFilePath atomically: YES];
+    [_dataStore storePhoto: pngFilePath withOrientation: orientation];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->_editorView build];
+        self->_photo = nil;
+    });
+}
+
+#pragma mark - IEditorViewDelegate methods
+
+- (void)onGoBack {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
