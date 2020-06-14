@@ -722,6 +722,7 @@
         _stillCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPresetPhoto cameraPosition:AVCaptureDevicePositionFront];
         _frontCamera = TRUE;
     }
+    _stillCamera.horizontallyMirrorFrontFacingCamera = YES;
     
     if (_iOrientation == UIDeviceOrientationPortrait)
         _stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
