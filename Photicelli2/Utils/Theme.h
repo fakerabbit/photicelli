@@ -11,6 +11,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#define kCameraViewFiltersScrollViewHeight 70.f
+#define kCameraViewFiltersScrollViewLeftPadding 5.f
+#define kCameraViewFiltersScrollViewPadding 5.f
+#define kCameraViewFiltersScrollViewTopPadding 5.f
+#define kCameraViewFiltersScrollViewLabelHeight 20.f
+
 @interface Theme : NSObject
 
 /**
@@ -111,18 +117,28 @@ typedef enum {
     GPUIMAGE_NUMFILTERS
 } kVideoFilterType;
 
++ (kVideoFilterType)typeForFilter:(NSString*)name;
+
 /**
  * Theme colors.
 */
 
 + (UIColor*)backgroundColor;
 + (UIColor*)cyanColor;
++ (UIColor*)transparentColor;
 
 /**
  * Theme images.
 */
 
 extern NSString * const kImageLogo;
+
+/**
+ * Theme fonts.
+*/
+
++ (void)printSystemFonts;
++ (UIFont*)titleFontWithSize:(CGFloat)size;
 
 @end
 

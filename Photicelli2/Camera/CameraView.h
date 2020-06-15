@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <GPUImage/GPUImageFramework.h>
 
+#import "FilterThumb.h"
 #import "Theme.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -19,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)onTakePic:(UIImage*)pPhoto;
 @end
 
-@interface CameraView : GPUImageView {
+@interface CameraView : GPUImageView <UIScrollViewDelegate, IFilterThumbDelegate> {
 @private
     /**
      * GPUImage
@@ -37,6 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
     BOOL _frontCamera;
     BOOL _cameraReady;
     UIButton *_takePictureButton;
+    UIScrollView *_filtersSV;
+    NSArray *_filtersArray;
 }
 
 @property (nonatomic, weak) id <ICameraViewDelegate> delegate;

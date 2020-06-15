@@ -55,8 +55,24 @@
         _takePictureButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_takePictureButton.widthAnchor constraintEqualToConstant:100].active = YES;
         [_takePictureButton.heightAnchor constraintEqualToConstant:100].active = YES;
-        [_takePictureButton.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:-100.0].active = YES;
+        [_takePictureButton.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:-(kCameraViewFiltersScrollViewHeight + 70.0)].active = YES;
         [_takePictureButton.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
+        
+        _filtersSV = [[UIScrollView alloc] initWithFrame:CGRectZero];
+        _filtersSV.delegate = self;
+        _filtersSV.scrollEnabled = YES;
+        _filtersSV.pagingEnabled = YES;
+        _filtersSV.clipsToBounds = YES;
+        _filtersSV.userInteractionEnabled = YES;
+        _filtersSV.bounces = YES;
+        _filtersSV.showsHorizontalScrollIndicator = NO;
+        _filtersSV.showsVerticalScrollIndicator = NO;
+        _filtersSV.backgroundColor = [Theme transparentColor];
+        [self addSubview:_filtersSV];
+        _filtersSV.translatesAutoresizingMaskIntoConstraints = NO;
+        [_filtersSV.widthAnchor constraintEqualToAnchor:self.widthAnchor].active = YES;
+         [_filtersSV.heightAnchor constraintEqualToConstant:kCameraViewFiltersScrollViewHeight].active = YES;
+        [_filtersSV.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:-kCameraViewFiltersScrollViewHeight].active = YES;
         
         _cameraReady = YES;
     }
@@ -71,7 +87,7 @@
     //[_stillCamera.inputCamera unlockForConfiguration];
     
     [self setupFilter:GPUIMAGE_SATURATION];
-    //[self setupFilters];
+    [self setupFilters];
     [_stillCamera startCameraCapture];
 }
 
@@ -699,6 +715,57 @@
     [_stillCamera startCameraCapture];
 }
 
+- (void)setupFilters {
+    CGFloat cx = kCameraViewFiltersScrollViewLeftPadding;
+    CGFloat y = kCameraViewFiltersScrollViewTopPadding;
+    int numpages = 0;
+    
+    NSString *path = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"CaptureFilters.plist"];
+    NSDictionary *filters = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+    int numberOfThumbs = (int)[filters count];
+    
+    CGFloat width = self.frame.size.width;
+    CGFloat thumbWidth = (width/5.f) - kCameraViewFiltersScrollViewPadding;
+    CGFloat thumbHeight = kCameraViewFiltersScrollViewHeight/2.f + kCameraViewFiltersScrollViewLabelHeight;
+    CGRect thumbFrame = CGRectMake(0, 0, thumbWidth, thumbHeight);
+    
+    NSString *name = nil;
+    NSMutableArray * tempArray = [[NSMutableArray alloc] init];
+    
+    for (int i=0; i<numberOfThumbs; i++) {
+        FilterThumb *thumbView = [[FilterThumb alloc] initWithFrame:thumbFrame];
+        thumbView.delegate = self;
+        
+        NSNumber* key = [NSNumber numberWithInt:i];
+        name = [filters objectForKey:[key stringValue]];
+        thumbView.type = [[NSString alloc] initWithString:name];
+        
+        CGRect rect = thumbView.frame;
+        rect.origin.x = cx;
+        rect.origin.y = y;
+        thumbView.frame = rect;
+        [_filtersSV addSubview:thumbView];
+        [thumbView build];
+        [tempArray addObject:thumbView];
+        
+        cx += thumbView.frame.size.width + kCameraViewFiltersScrollViewPadding;
+        
+        if (i==0)
+            [thumbView setSelected: YES];
+        
+        numpages++;
+    }
+    
+    if (numpages == 0)
+        numpages = 1;
+    
+    [_filtersSV setContentSize:CGSizeMake((thumbWidth+kCameraViewFiltersScrollViewLeftPadding*2)*numpages, [_filtersSV bounds].size.height)];
+    [_filtersSV scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+    
+    _filtersArray = [[NSArray alloc] initWithArray:tempArray];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)onGoBack:(id)sender {
@@ -770,6 +837,25 @@
             _stillCamera.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
         else
             _stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+    }
+}
+
+#pragma mark - UIScrollViewDelegate methods
+
+#pragma mark - IFilterThumbDelegate methods
+
+- (void)onTouch:(kVideoFilterType)filterType withFilter:(NSString *)name {
+    [_stillCamera stopCameraCapture];
+    [_stillCamera removeAllTargets];
+    [self setupFilter:filterType];
+    
+    for (FilterThumb *t in _filtersArray) {
+        if ([name isEqualToString:t.type])
+            [t setSelected: YES];
+        else
+            [t setSelected: NO];
+        
+        //[t setNeedsDisplay];
     }
 }
 
