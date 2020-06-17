@@ -110,4 +110,21 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)onShare:(UIImage *)image {
+    NSArray *activityItems = [NSArray arrayWithObjects:image, nil];
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion: nil];
+    [activityController setCompletionWithItemsHandler:^(UIActivityType _Nullable activityType, BOOL completed, NSArray *_Nullable returnedItems, NSError * _Nullable activityError) {
+        if (activityType != nil) {
+            //NSLog(@"activityType: %@", activityType);
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Success" message:@"Your picture was shared" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+               handler:^(UIAlertAction * action) {}];
+
+            [alertController addAction:defaultAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    }];
+}
+
 @end

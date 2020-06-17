@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol IEditorViewDelegate <NSObject>
 -(void)onGoBack;
+-(void)onShare:(UIImage*)image;
 @end
 
 @interface EditorView : UIView <UIScrollViewDelegate> {
@@ -23,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
      * UI
      */
     UIButton *_cancelButton;
+    UIButton *_shareButton;
 }
 
 @property (nonatomic, weak) id <IEditorViewDelegate> delegate;

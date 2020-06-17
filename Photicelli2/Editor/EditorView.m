@@ -11,6 +11,7 @@
 
 @interface EditorView (IBActions)
 -(IBAction)onGoBack:(id)sender;
+-(IBAction)onShare:(id)sender;
 @end
 
 @implementation EditorView
@@ -47,6 +48,17 @@
         [_cancelButton.heightAnchor constraintEqualToConstant:50].active = YES;
         [_cancelButton.topAnchor constraintEqualToAnchor:self.topAnchor constant:50.0].active = YES;
         [_cancelButton.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:10.0].active = YES;
+        
+        _shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_shareButton setBackgroundImage:[UIImage systemImageNamed:@"arrow.up.square"] forState:UIControlStateNormal];
+        [_shareButton setTintColor:[Theme cyanColor]];
+        [_shareButton addTarget:self action:@selector(onShare:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_shareButton];
+        _shareButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [_shareButton.widthAnchor constraintEqualToConstant:50].active = YES;
+        [_shareButton.heightAnchor constraintEqualToConstant:50].active = YES;
+        [_shareButton.topAnchor constraintEqualToAnchor:self.topAnchor constant:50.0].active = YES;
+        [_shareButton.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-10.0].active = YES;
     }
     return self;
 }
@@ -61,6 +73,10 @@
 
 - (IBAction)onGoBack:(id)sender {
     [delegate onGoBack];
+}
+
+- (IBAction)onShare:(id)sender {
+    [delegate onShare:_image];
 }
 
 #pragma mark - UIScrollViewDelegate methods
