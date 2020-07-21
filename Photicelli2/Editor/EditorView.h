@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
      */
     UIButton *_cancelButton;
     UIButton *_shareButton;
+    UIActivityIndicatorView *_loading;
 }
 
 @property (nonatomic, weak) id <IEditorViewDelegate> delegate;

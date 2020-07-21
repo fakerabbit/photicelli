@@ -25,6 +25,13 @@
     if (self) {
         self.backgroundColor = [Theme backgroundColor];
         
+        _loading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleLarge];
+        [_loading startAnimating];
+        [self addSubview:_loading];
+        _loading.translatesAutoresizingMaskIntoConstraints = NO;
+        [_loading.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
+        [_loading.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
+        
         _photoView = [[PhotoView alloc] initWithFrame:CGRectZero];
         _photoView.delegate = self;
         _photoView.minimumZoomScale = 0.2f;
@@ -35,8 +42,6 @@
         _photoView.translatesAutoresizingMaskIntoConstraints = NO;
         [_photoView.widthAnchor constraintEqualToAnchor:self.widthAnchor].active = YES;
         [_photoView.heightAnchor constraintEqualToAnchor:self.heightAnchor].active = YES;
-        //[_photoView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
-        //[_photoView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
         
         _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_cancelButton setBackgroundImage:[UIImage systemImageNamed:@"arrow.left"] forState:UIControlStateNormal];

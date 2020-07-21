@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC5CCE54249AFFCD00B6FACB /* AlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CCE53249AFFCD00B6FACB /* AlbumView.m */; };
+		AC5CCE57249AFFE000B6FACB /* AlbumController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CCE56249AFFE000B6FACB /* AlbumController.m */; };
+		AC5CCE5A249B02BB00B6FACB /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CCE59249B02BB00B6FACB /* AlbumCell.m */; };
+		AC5CCE5C249B1D2B00B6FACB /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC5CCE5B249B1D2B00B6FACB /* Photos.framework */; };
 		AC9F7390248ABF8D00FF3381 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F738F248ABF8D00FF3381 /* AppDelegate.m */; };
 		AC9F7393248ABF8D00FF3381 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F7392248ABF8D00FF3381 /* SceneDelegate.m */; };
 		AC9F7396248ABF8D00FF3381 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F7395248ABF8D00FF3381 /* ViewController.m */; };
@@ -209,6 +213,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AC5CCE52249AFFCD00B6FACB /* AlbumView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumView.h; sourceTree = "<group>"; };
+		AC5CCE53249AFFCD00B6FACB /* AlbumView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlbumView.m; sourceTree = "<group>"; };
+		AC5CCE55249AFFE000B6FACB /* AlbumController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumController.h; sourceTree = "<group>"; };
+		AC5CCE56249AFFE000B6FACB /* AlbumController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlbumController.m; sourceTree = "<group>"; };
+		AC5CCE58249B02BB00B6FACB /* AlbumCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumCell.h; sourceTree = "<group>"; };
+		AC5CCE59249B02BB00B6FACB /* AlbumCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlbumCell.m; sourceTree = "<group>"; };
+		AC5CCE5B249B1D2B00B6FACB /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		AC9F738B248ABF8D00FF3381 /* Photicelli.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photicelli.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9F738E248ABF8D00FF3381 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AC9F738F248ABF8D00FF3381 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -397,6 +408,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC5CCE5C249B1D2B00B6FACB /* Photos.framework in Frameworks */,
 				ACCA8B25248DD6C40045D15B /* QuartzCore.framework in Frameworks */,
 				ACCA8B23248DD6BC0045D15B /* AVFoundation.framework in Frameworks */,
 				ACCA8B21248DD6B40045D15B /* OpenGLES.framework in Frameworks */,
@@ -408,6 +420,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC5CCE4F249AFFAE00B6FACB /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				AC5CCE52249AFFCD00B6FACB /* AlbumView.h */,
+				AC5CCE53249AFFCD00B6FACB /* AlbumView.m */,
+				AC5CCE55249AFFE000B6FACB /* AlbumController.h */,
+				AC5CCE56249AFFE000B6FACB /* AlbumController.m */,
+				AC5CCE58249B02BB00B6FACB /* AlbumCell.h */,
+				AC5CCE59249B02BB00B6FACB /* AlbumCell.m */,
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
 		AC9F7382248ABF8D00FF3381 = {
 			isa = PBXGroup;
 			children = (
@@ -429,6 +454,7 @@
 		AC9F738D248ABF8D00FF3381 /* Photicelli2 */ = {
 			isa = PBXGroup;
 			children = (
+				AC5CCE4F249AFFAE00B6FACB /* Album */,
 				ACB7EFCC24971DE20026ECAC /* GPUImage */,
 				ACB7EFC9249714E90026ECAC /* Assets */,
 				ACB7EFC52496EB9D0026ECAC /* Filters */,
@@ -691,6 +717,7 @@
 		ACCA8B1B248DD6A20045D15B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC5CCE5B249B1D2B00B6FACB /* Photos.framework */,
 				ACCA8B24248DD6C40045D15B /* QuartzCore.framework */,
 				ACCA8B22248DD6BC0045D15B /* AVFoundation.framework */,
 				ACCA8B20248DD6B40045D15B /* OpenGLES.framework */,
@@ -934,14 +961,17 @@
 				AC9F7396248ABF8D00FF3381 /* ViewController.m in Sources */,
 				ACAFD3EF248F3952009DE96E /* UIImage+RoundedCorner.m in Sources */,
 				AC9F7390248ABF8D00FF3381 /* AppDelegate.m in Sources */,
+				AC5CCE54249AFFCD00B6FACB /* AlbumView.m in Sources */,
 				ACAFD3E6248F304C009DE96E /* PhotoView.m in Sources */,
 				ACFCD001248C8C3600136D21 /* NavigationController.m in Sources */,
 				ACB7EFC82496EC880026ECAC /* FilterThumb.m in Sources */,
+				AC5CCE5A249B02BB00B6FACB /* AlbumCell.m in Sources */,
 				ACAFD3E3248F2BDF009DE96E /* EditorController.m in Sources */,
 				AC9F73B4248B04F400FF3381 /* CameraView.m in Sources */,
 				ACAFD3F0248F3952009DE96E /* UIImage+Alpha.m in Sources */,
 				ACF8F8B7249429ED00C94392 /* Photo.m in Sources */,
 				ACAFD3E0248F2BB2009DE96E /* EditorView.m in Sources */,
+				AC5CCE57249AFFE000B6FACB /* AlbumController.m in Sources */,
 				AC9F73A1248ABF9000FF3381 /* main.m in Sources */,
 				AC9F73AD248ADEB600FF3381 /* Theme.m in Sources */,
 				ACAFD3EE248F3952009DE96E /* UIImage+Resize.m in Sources */,

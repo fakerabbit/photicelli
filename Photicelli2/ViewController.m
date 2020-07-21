@@ -49,6 +49,8 @@
 }
 
 - (void)onLibrary {
+    _albumController = [[AlbumController alloc] init];
+    [self.navigationController pushViewController:self->_albumController animated:YES];
 }
 
 @end
