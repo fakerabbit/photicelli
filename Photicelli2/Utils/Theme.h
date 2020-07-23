@@ -114,7 +114,8 @@ typedef enum {
     GPUIMAGE_UIELEMENT,
     GPUIMAGE_FILECONFIG,
     GPUIMAGE_FILTERGROUP,
-    GPUIMAGE_NUMFILTERS
+    GPUIMAGE_NUMFILTERS,
+    GPUIMAGE_SMOOTH
 } kVideoFilterType;
 
 + (kVideoFilterType)typeForFilter:(NSString*)name;

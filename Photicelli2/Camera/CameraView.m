@@ -615,6 +615,11 @@
             [(GPUImageLowPassFilter *)_filter setFilterStrength:0.5];
         }
             break;
+        case GPUIMAGE_SMOOTH:
+        {
+            _filter = [[GPUImageSkinSmooth alloc] init];
+            break;
+        }
             
         default:
             _filter = [[GPUImageSepiaFilter alloc] init];

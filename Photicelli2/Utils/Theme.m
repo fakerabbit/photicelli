@@ -45,6 +45,10 @@
         type = GPUIMAGE_SOFTELEGANCE;
     else if ([lowecaseName isEqualToString:@"giger"])
         type = GPUIMAGE_CUSTOM2;
+    else if ([lowecaseName isEqualToString:@"invertor"])
+        type = GPUIMAGE_COLORINVERT;
+    else if ([lowecaseName isEqualToString:@"smooth"])
+        type = GPUIMAGE_SMOOTH;
     
     
     return type;

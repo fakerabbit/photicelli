@@ -19,7 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface EditorView : UIView <UIScrollViewDelegate> {
 @private
     PhotoView *_photoView;
-    UIView *test;
     /**
      * UI
      */
