@@ -15,13 +15,22 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)onLibrary;
 @end
 
-@interface MenuView : UIView {
+@interface MenuView : UIView <CAAnimationDelegate> {
 @private
     UIButton *_cameraBtn;
     UIButton *_libraryBtn;
+    
+    CAGradientLayer *gradient;
+    NSMutableArray *gradientSet;
+    NSInteger currentGradient;
+    struct CGColor *colorOne;
+    struct CGColor *colorTwo;
+    struct CGColor *colorThree;
 }
 
 @property (nonatomic, weak) id <IMenuViewDelegate> delegate;
+
+- (void)createGradientView;
 
 @end
 

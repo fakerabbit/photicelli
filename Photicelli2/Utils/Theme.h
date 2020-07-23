@@ -127,6 +127,7 @@ typedef enum {
 + (UIColor*)backgroundColor;
 + (UIColor*)cyanColor;
 + (UIColor*)transparentColor;
++ (UIColor*)whiteColor;
 
 /**
  * Theme images.

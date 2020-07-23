@@ -25,11 +25,17 @@
     if (self) {
         // Initialization code
         self.backgroundColor = [Theme backgroundColor];
+        gradient = [[CAGradientLayer alloc] init];
+        gradientSet = [NSMutableArray array];
+        currentGradient = 0;
+        colorOne = [UIColor redColor].CGColor;
+        colorTwo = [UIColor blueColor].CGColor;
+        colorThree = [UIColor greenColor].CGColor;
         
         // Create buttons
         _cameraBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_cameraBtn setBackgroundImage:[UIImage systemImageNamed:@"camera"] forState:UIControlStateNormal];
-        [_cameraBtn setTintColor:[Theme cyanColor]];
+        [_cameraBtn setTintColor:[Theme whiteColor]];
         [_cameraBtn addTarget:self action:@selector(onCamera:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_cameraBtn];
         _cameraBtn.translatesAutoresizingMaskIntoConstraints = NO;
@@ -40,7 +46,7 @@
         
         _libraryBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_libraryBtn setBackgroundImage:[UIImage systemImageNamed:@"folder"] forState:UIControlStateNormal];
-        [_libraryBtn setTintColor:[Theme cyanColor]];
+        [_libraryBtn setTintColor:[Theme whiteColor]];
         [_libraryBtn addTarget:self action:@selector(onLibrary:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_libraryBtn];
         _libraryBtn.translatesAutoresizingMaskIntoConstraints = NO;
@@ -60,6 +66,34 @@
     return self;
 }
 
+- (void)createGradientView {
+    [gradientSet addObject: [NSArray arrayWithObjects: (__bridge id)colorOne, (__bridge id)colorTwo, nil]];
+    [gradientSet addObject: [NSArray arrayWithObjects: (__bridge id)colorTwo, (__bridge id)colorThree, nil]];
+    [gradientSet addObject: [NSArray arrayWithObjects: (__bridge id)colorThree, (__bridge id)colorOne, nil]];
+    gradient.frame = self.bounds;
+    gradient.colors = gradientSet[currentGradient];
+    gradient.startPoint = CGPointMake(0, 0);
+    gradient.endPoint = CGPointMake(1, 1);
+    gradient.drawsAsynchronously = YES;
+    [self.layer insertSublayer:gradient atIndex:0];
+    [self animateGradient];
+}
+
+- (void)animateGradient {
+    if (currentGradient < (gradientSet.count - 1)) {
+        currentGradient += 1;
+    } else {
+        currentGradient = 0;
+    }
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"colors"];
+    animation.duration = 3;
+    animation.toValue = gradientSet[currentGradient];
+    animation.fillMode = kCAFillModeForwards;
+    animation.removedOnCompletion = NO;
+    animation.delegate = self;
+    [gradient addAnimation:animation forKey:@"gradientAnimation"];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)onCamera:(id)sender {
@@ -68,6 +102,15 @@
 
 -(IBAction)onLibrary:(id)sender {
     [delegate onLibrary];
+}
+
+#pragma mark - CAAnimationDelegate methods
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    if (flag) {
+        gradient.colors = gradientSet[currentGradient];
+        [self animateGradient];
+    }
 }
 
 @end

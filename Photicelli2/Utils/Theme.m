@@ -82,7 +82,14 @@
  * Returns the  transparent color used in the filters' scrollview background.
  */
 + (UIColor*)transparentColor {
-    return [UIColor colorWithRed:0.f green:0.f blue:0.f alpha:1.f];//.7
+    return [UIColor colorWithRed:0.f green:0.f blue:0.f alpha:1.f];
+}
+
+/**
+ * Returns the  main color used in the menu buttons.
+ */
++ (UIColor*)whiteColor {
+    return [UIColor colorWithRed:0.f green:0.f blue:0.f alpha:0.8f];
 }
 
 #pragma mark - Images
