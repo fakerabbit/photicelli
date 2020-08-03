@@ -11,6 +11,7 @@
 #import <GPUImage/GPUImageFramework.h>
 
 #import "FilterThumb.h"
+#import "Filters.h"
 #import "Theme.h"
 
 NS_ASSUME_NONNULL_BEGIN

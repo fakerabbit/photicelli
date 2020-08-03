@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC56192D24D8BA2700383BFC /* Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = AC56192C24D8BA2700383BFC /* Filters.m */; };
 		AC5CCE54249AFFCD00B6FACB /* AlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CCE53249AFFCD00B6FACB /* AlbumView.m */; };
 		AC5CCE57249AFFE000B6FACB /* AlbumController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CCE56249AFFE000B6FACB /* AlbumController.m */; };
 		AC5CCE5A249B02BB00B6FACB /* AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC5CCE59249B02BB00B6FACB /* AlbumCell.m */; };
 		AC5CCE5C249B1D2B00B6FACB /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC5CCE5B249B1D2B00B6FACB /* Photos.framework */; };
+		AC9D58BA24CB6D4600B951AD /* FilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9D58B924CB6D4600B951AD /* FilterCell.m */; };
 		AC9F7390248ABF8D00FF3381 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F738F248ABF8D00FF3381 /* AppDelegate.m */; };
 		AC9F7393248ABF8D00FF3381 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F7392248ABF8D00FF3381 /* SceneDelegate.m */; };
 		AC9F7396248ABF8D00FF3381 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9F7395248ABF8D00FF3381 /* ViewController.m */; };
@@ -213,6 +215,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AC56192B24D8BA2700383BFC /* Filters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Filters.h; sourceTree = "<group>"; };
+		AC56192C24D8BA2700383BFC /* Filters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Filters.m; sourceTree = "<group>"; };
 		AC5CCE52249AFFCD00B6FACB /* AlbumView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumView.h; sourceTree = "<group>"; };
 		AC5CCE53249AFFCD00B6FACB /* AlbumView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlbumView.m; sourceTree = "<group>"; };
 		AC5CCE55249AFFE000B6FACB /* AlbumController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumController.h; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 		AC5CCE58249B02BB00B6FACB /* AlbumCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumCell.h; sourceTree = "<group>"; };
 		AC5CCE59249B02BB00B6FACB /* AlbumCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlbumCell.m; sourceTree = "<group>"; };
 		AC5CCE5B249B1D2B00B6FACB /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		AC9D58B824CB6D4600B951AD /* FilterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterCell.h; sourceTree = "<group>"; };
+		AC9D58B924CB6D4600B951AD /* FilterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterCell.m; sourceTree = "<group>"; };
 		AC9F738B248ABF8D00FF3381 /* Photicelli.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photicelli.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9F738E248ABF8D00FF3381 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AC9F738F248ABF8D00FF3381 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -490,6 +496,8 @@
 				ACF8F8B12494299300C94392 /* DataStore.m */,
 				ACF8F8B5249429EC00C94392 /* Photo.h */,
 				ACF8F8B6249429EC00C94392 /* Photo.m */,
+				AC56192B24D8BA2700383BFC /* Filters.h */,
+				AC56192C24D8BA2700383BFC /* Filters.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -537,6 +545,8 @@
 			children = (
 				ACB7EFC62496EC880026ECAC /* FilterThumb.h */,
 				ACB7EFC72496EC880026ECAC /* FilterThumb.m */,
+				AC9D58B824CB6D4600B951AD /* FilterCell.h */,
+				AC9D58B924CB6D4600B951AD /* FilterCell.m */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -965,11 +975,13 @@
 				ACAFD3E6248F304C009DE96E /* PhotoView.m in Sources */,
 				ACFCD001248C8C3600136D21 /* NavigationController.m in Sources */,
 				ACB7EFC82496EC880026ECAC /* FilterThumb.m in Sources */,
+				AC56192D24D8BA2700383BFC /* Filters.m in Sources */,
 				AC5CCE5A249B02BB00B6FACB /* AlbumCell.m in Sources */,
 				ACAFD3E3248F2BDF009DE96E /* EditorController.m in Sources */,
 				AC9F73B4248B04F400FF3381 /* CameraView.m in Sources */,
 				ACAFD3F0248F3952009DE96E /* UIImage+Alpha.m in Sources */,
 				ACF8F8B7249429ED00C94392 /* Photo.m in Sources */,
+				AC9D58BA24CB6D4600B951AD /* FilterCell.m in Sources */,
 				ACAFD3E0248F2BB2009DE96E /* EditorView.m in Sources */,
 				AC5CCE57249AFFE000B6FACB /* AlbumController.m in Sources */,
 				AC9F73A1248ABF9000FF3381 /* main.m in Sources */,

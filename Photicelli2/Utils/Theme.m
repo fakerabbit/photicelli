@@ -10,50 +10,6 @@
 
 @implementation Theme
 
-#pragma mark - Filters
-
-/**
- * Returns the kVideoFilterType  for a given name string.
- */
-+ (kVideoFilterType)typeForFilter:(NSString*)name {
-    kVideoFilterType type = -1;
-    NSString *lowecaseName = [name lowercaseString];
-    
-    if ([lowecaseName isEqualToString:@"none"])
-        type = GPUIMAGE_SATURATION;
-    else if ([lowecaseName isEqualToString:@"miya"])
-        type = GPUIMAGE_THRESHOLD;
-    else if ([lowecaseName isEqualToString:@"akira"])
-        type = GPUIMAGE_SOBELEDGEDETECTION;
-    else if ([lowecaseName isEqualToString:@"vinci"])
-        type = GPUIMAGE_SKETCH;
-    else if ([lowecaseName isEqualToString:@"walt"])
-        type = GPUIMAGE_TOON;
-    else if ([lowecaseName isEqualToString:@"amiga"])
-        type = GPUIMAGE_CGA;
-    else if ([lowecaseName isEqualToString:@"goethe"])
-        type = GPUIMAGE_PINCH;
-    else if ([lowecaseName isEqualToString:@"quino"])
-        type = GPUIMAGE_EROSION;
-    else if ([lowecaseName isEqualToString:@"victoria"])
-        type = GPUIMAGE_CUSTOM;
-    else if ([lowecaseName isEqualToString:@"rose"])
-        type = GPUIMAGE_AMATORKA;
-    else if ([lowecaseName isEqualToString:@"missetikate"])
-        type = GPUIMAGE_MISSETIKATE;
-    else if ([lowecaseName isEqualToString:@"burton"])
-        type = GPUIMAGE_SOFTELEGANCE;
-    else if ([lowecaseName isEqualToString:@"giger"])
-        type = GPUIMAGE_CUSTOM2;
-    else if ([lowecaseName isEqualToString:@"invertor"])
-        type = GPUIMAGE_COLORINVERT;
-    else if ([lowecaseName isEqualToString:@"smooth"])
-        type = GPUIMAGE_SMOOTH;
-    
-    
-    return type;
-}
-
 #pragma mark - Colors
 
 /**

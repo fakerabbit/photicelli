@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)onShare:(UIImage*)image;
 @end
 
-@interface EditorView : UIView <UIScrollViewDelegate> {
+@interface EditorView : UIView <UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource> {
 @private
     PhotoView *_photoView;
     /**
@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
     UIButton *_cancelButton;
     UIButton *_shareButton;
     UIActivityIndicatorView *_loading;
+    UICollectionView *_filtersView;
+    NSMutableArray *_filtersArray;
 }
 
 @property (nonatomic, weak) id <IEditorViewDelegate> delegate;

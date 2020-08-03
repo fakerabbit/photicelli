@@ -76,7 +76,7 @@
 #pragma mark - IBActions
 
 - (IBAction)onTouch:(id)sender {
-    kVideoFilterType fType = [Theme typeForFilter:_type];
+    kVideoFilterType fType = [Filters typeForFilter:_type];
     [delegate onTouch:fType withFilter:_type];
 }
 
