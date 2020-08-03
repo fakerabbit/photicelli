@@ -34,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
     /**
      * UI
      */
+    UIActivityIndicatorView *_loading;
     UIButton *_cancelButton;
     UIButton *_flipCameraButton;
     BOOL _frontCamera;

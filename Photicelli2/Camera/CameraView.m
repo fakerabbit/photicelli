@@ -74,6 +74,13 @@
          [_filtersSV.heightAnchor constraintEqualToConstant:kCameraViewFiltersScrollViewHeight].active = YES;
         [_filtersSV.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:-kCameraViewFiltersScrollViewHeight].active = YES;
         
+        _loading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleLarge];
+        _loading.hidesWhenStopped = YES;
+        [self addSubview:_loading];
+        _loading.translatesAutoresizingMaskIntoConstraints = NO;
+        [_loading.centerXAnchor constraintEqualToAnchor:self.centerXAnchor].active = YES;
+        [_loading.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
+        
         _cameraReady = YES;
     }
     return self;
@@ -106,137 +113,144 @@
 #pragma mark - Filters
 
 - (void)setupFilter:(kVideoFilterType)videoFilterType {
-    BOOL needsSecondImage = NO;
-    _filterType = videoFilterType;
-    _filter = [Filters initializeFilter:_filterType];
-    
-    if (
-        videoFilterType == GPUIMAGE_MASK ||
-        videoFilterType == GPUIMAGE_CHROMAKEY ||
-        videoFilterType == GPUIMAGE_MULTIPLY ||
-        videoFilterType == GPUIMAGE_OVERLAY ||
-        videoFilterType == GPUIMAGE_LIGHTEN ||
-        videoFilterType == GPUIMAGE_DARKEN ||
-        videoFilterType == GPUIMAGE_DISSOLVE ||
-        videoFilterType == GPUIMAGE_SCREENBLEND ||
-        videoFilterType == GPUIMAGE_COLORBURN ||
-        videoFilterType == GPUIMAGE_COLORDODGE ||
-        videoFilterType == GPUIMAGE_EXCLUSIONBLEND ||
-        videoFilterType == GPUIMAGE_DIFFERENCEBLEND ||
-        videoFilterType == GPUIMAGE_SUBTRACTBLEND ||
-        videoFilterType == GPUIMAGE_HARDLIGHTBLEND ||
-        videoFilterType == GPUIMAGE_SOFTLIGHTBLEND
-    ) {
-        needsSecondImage = YES;
-    } else if (videoFilterType == GPUIMAGE_VORONI) {
-        GPUImageJFAVoronoiFilter *jfa = [[GPUImageJFAVoronoiFilter alloc] init];
-        [jfa setSizeInPixels:CGSizeMake(1024.0, 1024.0)];
+    [_loading startAnimating];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        BOOL needsSecondImage = NO;
+        self->_filterType = videoFilterType;
+        self->_filter = [Filters initializeFilter:self->_filterType];
         
-        _sourcePicture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"voroni_points2.png"]];
-        
-        [_sourcePicture addTarget:jfa];
-        
-        _filter = [[GPUImageVoronoiConsumerFilter alloc] init];
-        
-        [jfa setSizeInPixels:CGSizeMake(1024.0, 1024.0)];
-        [(GPUImageVoronoiConsumerFilter *)_filter setSizeInPixels:CGSizeMake(1024.0, 1024.0)];
-        
-        [_stillCamera addTarget:_filter];
-        [jfa addTarget:_filter];
-        [_sourcePicture processImage];
-    }
-    else if (videoFilterType == GPUIMAGE_FILECONFIG) {
-        //self.title = @"File Configuration";
-        _pipeline = [[GPUImageFilterPipeline alloc] initWithConfigurationFile:[[NSBundle mainBundle] URLForResource:@"SampleConfiguration" withExtension:@"plist"]
-                                                                       input:_stillCamera output:(GPUImageView*)self];
-        
-        //        [pipeline addFilter:rotationFilter atIndex:0];
-    }
-    else {
-        
-        if (videoFilterType != GPUIMAGE_VORONI) {
-            //[_filter prepareForImageCapture];
-            [_stillCamera addTarget:_filter];
+        if (
+            videoFilterType == GPUIMAGE_MASK ||
+            videoFilterType == GPUIMAGE_CHROMAKEY ||
+            videoFilterType == GPUIMAGE_MULTIPLY ||
+            videoFilterType == GPUIMAGE_OVERLAY ||
+            videoFilterType == GPUIMAGE_LIGHTEN ||
+            videoFilterType == GPUIMAGE_DARKEN ||
+            videoFilterType == GPUIMAGE_DISSOLVE ||
+            videoFilterType == GPUIMAGE_SCREENBLEND ||
+            videoFilterType == GPUIMAGE_COLORBURN ||
+            videoFilterType == GPUIMAGE_COLORDODGE ||
+            videoFilterType == GPUIMAGE_EXCLUSIONBLEND ||
+            videoFilterType == GPUIMAGE_DIFFERENCEBLEND ||
+            videoFilterType == GPUIMAGE_SUBTRACTBLEND ||
+            videoFilterType == GPUIMAGE_HARDLIGHTBLEND ||
+            videoFilterType == GPUIMAGE_SOFTLIGHTBLEND
+        ) {
+            needsSecondImage = YES;
+        } else if (videoFilterType == GPUIMAGE_VORONI) {
+            GPUImageJFAVoronoiFilter *jfa = [[GPUImageJFAVoronoiFilter alloc] init];
+            [jfa setSizeInPixels:CGSizeMake(1024.0, 1024.0)];
+            
+            self->_sourcePicture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"voroni_points2.png"]];
+            
+            [self->_sourcePicture addTarget:jfa];
+            
+            self->_filter = [[GPUImageVoronoiConsumerFilter alloc] init];
+            
+            [jfa setSizeInPixels:CGSizeMake(1024.0, 1024.0)];
+            [(GPUImageVoronoiConsumerFilter *)self->_filter setSizeInPixels:CGSizeMake(1024.0, 1024.0)];
+            
+            [self->_stillCamera addTarget:self->_filter];
+            [jfa addTarget:self->_filter];
+            [self->_sourcePicture processImage];
         }
-        
-        _stillCamera.runBenchmark = NO;
-        
-        if (needsSecondImage) {
-            UIImage *inputImage;
+        else if (videoFilterType == GPUIMAGE_FILECONFIG) {
+            //self.title = @"File Configuration";
+            self->_pipeline = [[GPUImageFilterPipeline alloc] initWithConfigurationFile:[[NSBundle mainBundle] URLForResource:@"SampleConfiguration" withExtension:@"plist"]
+                                                                                  input:self->_stillCamera output:(GPUImageView*)self];
             
-            if (videoFilterType == GPUIMAGE_MASK)
-            {
-                inputImage = [UIImage imageNamed:@"mask"];
-            }
-            /*
-             else if (videoFilterType == GPUIMAGE_VORONI) {
-             inputImage = [UIImage imageNamed:@"voroni_points.png"];
-             }*/
-            else {
-                // The picture is only used for two-image blend filters
-                inputImage = [UIImage imageNamed:@"WID-small.jpg"];
-            }
-            
-            
-            _sourcePicture = [[GPUImagePicture alloc] initWithImage:inputImage smoothlyScaleOutput:YES];
-            [_sourcePicture addTarget:_filter];
-            
-            [_sourcePicture processImage];
-            
+            //        [pipeline addFilter:rotationFilter atIndex:0];
         }
-        
-        GPUImageView *filterView = (GPUImageView *)self;
-        
-        if (videoFilterType == GPUIMAGE_HISTOGRAM) {
-            // I'm adding an intermediary filter because glReadPixels() requires something to be rendered for its glReadPixels() operation to work
-            [_stillCamera removeTarget:_filter];
-            GPUImageGammaFilter *gammaFilter = [[GPUImageGammaFilter alloc] init];
-            [_stillCamera addTarget:gammaFilter];
-            [gammaFilter addTarget:_filter];
-            
-            GPUImageHistogramGenerator *histogramGraph = [[GPUImageHistogramGenerator alloc] init];
-            
-            [histogramGraph forceProcessingAtSize:CGSizeMake(256.0, 330.0)];
-            [_filter addTarget:histogramGraph];
-            
-            GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
-            blendFilter.mix = 0.75;
-            
-            [_stillCamera addTarget:blendFilter];
-            [histogramGraph addTarget:blendFilter];
-            _stillCamera.targetToIgnoreForUpdates = blendFilter; // Avoid double-updating the blend
-            
-            [blendFilter addTarget:filterView];
-            //[blendFilter addTarget:movieWriter];
-        }
-        else if (videoFilterType == GPUIMAGE_HARRISCORNERDETECTION) {
-            GPUImageCrosshairGenerator *crosshairGenerator = [[GPUImageCrosshairGenerator alloc] init];
-            crosshairGenerator.crosshairWidth = 15.0;
-            [crosshairGenerator forceProcessingAtSize:CGSizeMake(480.0, 640.0)];
-            
-            // [(GPUImageHarrisCornerDetectionFilter *)_filter setCornersDetectedBlock:^(GLfloat* cornerArray, NSUInteger cornersDetected) {
-            //   [crosshairGenerator renderCrosshairsFromArray:cornerArray count:cornersDetected];
-            //}];
-            
-            GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
-            GPUImageGammaFilter *gammaFilter = [[GPUImageGammaFilter alloc] init];
-            [_stillCamera addTarget:gammaFilter];
-            [gammaFilter addTarget:blendFilter];
-            gammaFilter.targetToIgnoreForUpdates = blendFilter;
-            
-            [crosshairGenerator addTarget:blendFilter];
-            
-            [blendFilter addTarget:filterView];
-            //[blendFilter addTarget:movieWriter];
-        }
-        
         else {
-            [_filter addTarget:filterView];
-            //[_filter addTarget:movieWriter];
+            
+            if (videoFilterType != GPUIMAGE_VORONI) {
+                //[_filter prepareForImageCapture];
+                [self->_stillCamera addTarget:self->_filter];
+            }
+            
+            self->_stillCamera.runBenchmark = NO;
+            
+            if (needsSecondImage) {
+                UIImage *inputImage;
+                
+                if (videoFilterType == GPUIMAGE_MASK)
+                {
+                    inputImage = [UIImage imageNamed:@"mask"];
+                }
+                /*
+                 else if (videoFilterType == GPUIMAGE_VORONI) {
+                 inputImage = [UIImage imageNamed:@"voroni_points.png"];
+                 }*/
+                else {
+                    // The picture is only used for two-image blend filters
+                    inputImage = [UIImage imageNamed:@"WID-small.jpg"];
+                }
+                
+                
+                self->_sourcePicture = [[GPUImagePicture alloc] initWithImage:inputImage smoothlyScaleOutput:YES];
+                [self->_sourcePicture addTarget:self->_filter];
+                
+                [self->_sourcePicture processImage];
+                
+            }
+            
+            GPUImageView *filterView = (GPUImageView *)self;
+            
+            if (videoFilterType == GPUIMAGE_HISTOGRAM) {
+                // I'm adding an intermediary filter because glReadPixels() requires something to be rendered for its glReadPixels() operation to work
+                [self->_stillCamera removeTarget:self->_filter];
+                GPUImageGammaFilter *gammaFilter = [[GPUImageGammaFilter alloc] init];
+                [self->_stillCamera addTarget:gammaFilter];
+                [gammaFilter addTarget:self->_filter];
+                
+                GPUImageHistogramGenerator *histogramGraph = [[GPUImageHistogramGenerator alloc] init];
+                
+                [histogramGraph forceProcessingAtSize:CGSizeMake(256.0, 330.0)];
+                [self->_filter addTarget:histogramGraph];
+                
+                GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
+                blendFilter.mix = 0.75;
+                
+                [self->_stillCamera addTarget:blendFilter];
+                [histogramGraph addTarget:blendFilter];
+                self->_stillCamera.targetToIgnoreForUpdates = blendFilter; // Avoid double-updating the blend
+                
+                [blendFilter addTarget:filterView];
+                //[blendFilter addTarget:movieWriter];
+            }
+            else if (videoFilterType == GPUIMAGE_HARRISCORNERDETECTION) {
+                GPUImageCrosshairGenerator *crosshairGenerator = [[GPUImageCrosshairGenerator alloc] init];
+                crosshairGenerator.crosshairWidth = 15.0;
+                [crosshairGenerator forceProcessingAtSize:CGSizeMake(480.0, 640.0)];
+                
+                // [(GPUImageHarrisCornerDetectionFilter *)_filter setCornersDetectedBlock:^(GLfloat* cornerArray, NSUInteger cornersDetected) {
+                //   [crosshairGenerator renderCrosshairsFromArray:cornerArray count:cornersDetected];
+                //}];
+                
+                GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
+                GPUImageGammaFilter *gammaFilter = [[GPUImageGammaFilter alloc] init];
+                [self->_stillCamera addTarget:gammaFilter];
+                [gammaFilter addTarget:blendFilter];
+                gammaFilter.targetToIgnoreForUpdates = blendFilter;
+                
+                [crosshairGenerator addTarget:blendFilter];
+                
+                [blendFilter addTarget:filterView];
+                //[blendFilter addTarget:movieWriter];
+            }
+            
+            else {
+                [self->_filter addTarget:filterView];
+                //[_filter addTarget:movieWriter];
+            }
         }
-    }
-    
-    [_stillCamera startCameraCapture];
+        
+        [self->_stillCamera startCameraCapture];
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self->_loading stopAnimating];
+        });
+    });
 }
 
 - (void)setupFilters {
